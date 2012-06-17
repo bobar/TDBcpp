@@ -1,2 +1,4 @@
-background: #333;
-color: #3F3;
+QWidget{
+    background-color: #222;
+    color: #3F3;
+}

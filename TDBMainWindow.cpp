@@ -1,11 +1,12 @@
 #include "TDBMainWindow.h"
 
-TDBMainWindow::TDBMainWindow(QString dbc, QString abc, QString bt) : QWidget(), back_color(dbc), alt_color(abc), banque(bt.toUpper())
+TDBMainWindow::TDBMainWindow() : QWidget()
 {
     setWindowTitle("TDB2.1");
+    QString banque = TDBApp->default_bank();
     bob_bank_button = new QPushButton(banque=="BOB"?"BôB":banque, this);
     binet_bank_button = new QPushButton("TDB2.1", this);
-    this->setStyleSheet(back_color);
+    this->setStyleSheet(TDBApp->default_style());
 
     QFont bank_button_font(bob_bank_button->font());
     bank_button_font.setBold(true);
@@ -661,7 +662,7 @@ void TDBMainWindow::binet_bank()
     binet_bank_button->setChecked(true);
     bob_is_bank = false;
 
-    this->setStyleSheet(alt_color);
+    this->setStyleSheet(TDBApp->alternate_style());
 }
 
 void TDBMainWindow::bob_bank()
@@ -671,7 +672,7 @@ void TDBMainWindow::bob_bank()
     bob_bank_button->setChecked(true);
     bob_is_bank = true;
 
-    this->setStyleSheet(back_color);
+    this->setStyleSheet(TDBApp->default_style());
 }
 
 void TDBMainWindow::ask_bank_account()

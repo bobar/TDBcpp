@@ -72,7 +72,7 @@ private:
 
     int last_conso_montant;
     TDBAccount* last_conso_bank;
-    QString last_clopes, back_color, alt_color, banque;
+    QString last_clopes;
     int last_clopes_quantite;
 
     //TDBEtron* etron;
@@ -192,7 +192,7 @@ private slots:
     //void all_lights_off();
 
 public:
-    TDBMainWindow(QString dbc, QString abc, QString bt);
+    TDBMainWindow();
     ~TDBMainWindow();
 };
 

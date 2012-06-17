@@ -16,7 +16,7 @@
 #include "TDBAuthDialog.h"
 #include "TDBExceptions.h"
 
-#define TDBApp (TDBApplication*)qApp
+#define TDBApp ((TDBApplication*)qApp)
 
 class TDBApplication : public QApplication
 {
@@ -25,14 +25,21 @@ class TDBApplication : public QApplication
 private:
     TDBDatabase* database;
 
+    QString dbc, abc, default_trig;
+
 public:
-    TDBApplication (int argc, char ** argv, QString host, QString db, QString login);
+    TDBApplication (int argc, char ** argv);
     ~TDBApplication ();
 
-	static QStringList parse(int argc, char ** argv, int* status);
+	int parse();
+	void usage(QString name);
+
     static int auth(QWidget* parent, int auth_level);
     static void critical(QWidget* parent, QString text);
-	static void usage(char name[]);
+
+    QString default_style();
+    QString alternate_style();
+    QString default_bank();
 };
 
 #endif
