@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="tdb" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<MakeCommands>
+			<Build command="$make -f $makefile $target" />
+			<CompileFile command="$make -f $makefile $file" />
+			<Clean command="$make -f $makefile $target-clean" />
+			<DistClean command="$make -f $makefile distclean$target" />
+			<AskRebuildNeeded command="$make -q -f $makefile $target" />
+			<SilentBuild command="$make -s -f $makefile $target" />
+		</MakeCommands>
+		<Build>
+			<Target title="Debug">
+				<Option output="debug\tdb" prefix_auto="1" extension_auto="1" />
+				<Option object_output="debug\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option parameters="-stylesheet ../style.qss" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<MakeCommands>
+					<Build command="$make -f $makefile $target" />
+					<CompileFile command="$make -f $makefile $file" />
+					<Clean command="$make -f $makefile $target-clean" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q -f $makefile $target" />
+					<SilentBuild command="$make -s -f $makefile $target" />
+				</MakeCommands>
+			</Target>
+			<Target title="Release">
+				<Option output="release\tdb" prefix_auto="1" extension_auto="1" />
+				<Option object_output="release\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<MakeCommands>
+					<Build command="$make -f $makefile $target" />
+					<CompileFile command="$make -f $makefile $file" />
+					<Clean command="$make -f $makefile $target-clean" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q -f $makefile $target" />
+					<SilentBuild command="$make -s -f $makefile $target" />
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="TDBAccount.cpp" />
+		<Unit filename="TDBAccount.h" />
+		<Unit filename="TDBAdminAdmin.cpp" />
+		<Unit filename="TDBAdminAdmin.h" />
+		<Unit filename="TDBAdminCreation.cpp" />
+		<Unit filename="TDBAdminCreation.h" />
+		<Unit filename="TDBAdminList.cpp" />
+		<Unit filename="TDBAdminList.h" />
+		<Unit filename="TDBAdminModification.cpp" />
+		<Unit filename="TDBAdminModification.h" />
+		<Unit filename="TDBApplication.cpp" />
+		<Unit filename="TDBApplication.h" />
+		<Unit filename="TDBAuth.h" />
+		<Unit filename="TDBAuthDialog.cpp" />
+		<Unit filename="TDBAuthDialog.h" />
+		<Unit filename="TDBBatchDialog.cpp" />
+		<Unit filename="TDBBatchDialog.h" />
+		<Unit filename="TDBClopes.cpp" />
+		<Unit filename="TDBClopes.h" />
+		<Unit filename="TDBClopesAdmin.cpp" />
+		<Unit filename="TDBClopesAdmin.h" />
+		<Unit filename="TDBClopesCreation.cpp" />
+		<Unit filename="TDBClopesCreation.h" />
+		<Unit filename="TDBClopesList.cpp" />
+		<Unit filename="TDBClopesList.h" />
+		<Unit filename="TDBClopesModification.cpp" />
+		<Unit filename="TDBClopesModification.h" />
+		<Unit filename="TDBDatabase.cpp" />
+		<Unit filename="TDBDatabase.h" />
+		<Unit filename="TDBExceptions.cpp" />
+		<Unit filename="TDBExceptions.h" />
+		<Unit filename="TDBHistory.cpp" />
+		<Unit filename="TDBHistory.h" />
+		<Unit filename="TDBMainWindow.cpp" />
+		<Unit filename="TDBMainWindow.h" />
+		<Unit filename="TDBMainWindow_admin.cpp" />
+		<Unit filename="TDBPasswordChange.cpp" />
+		<Unit filename="TDBPasswordChange.h" />
+		<Unit filename="TDBPasswordDialog.cpp" />
+		<Unit filename="TDBPasswordDialog.h" />
+		<Unit filename="TDBRefillDialog.cpp" />
+		<Unit filename="TDBRefillDialog.h" />
+		<Unit filename="TDBSearch.cpp" />
+		<Unit filename="TDBSearch.h" />
+		<Unit filename="TDBSearchList.cpp" />
+		<Unit filename="TDBSearchList.h" />
+		<Unit filename="TDBTransactionDialog.cpp" />
+		<Unit filename="TDBTransactionDialog.h" />
+		<Unit filename="TDBTransfertDialog.cpp" />
+		<Unit filename="TDBTransfertDialog.h" />
+		<Unit filename="TDBTrigrammeCreationDialog.cpp" />
+		<Unit filename="TDBTrigrammeCreationDialog.h" />
+		<Unit filename="TDBTrigrammeDialog.cpp" />
+		<Unit filename="TDBTrigrammeDialog.h" />
+		<Unit filename="TDBTrigrammeModificationDialog.cpp" />
+		<Unit filename="TDBTrigrammeModificationDialog.h" />
+		<Unit filename="TDBTrigrammeValidator.cpp" />
+		<Unit filename="TDBTrigrammeValidator.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="style.qss">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tdb.pro">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
