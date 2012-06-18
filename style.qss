@@ -1,4 +1,19 @@
 QWidget{
-    background-color: #222;
+    background-color: #000;
     color: #3F3;
+}
+TDBMainWindow, TDBMainWindow > QLabel, QHeaderView, QToolBar, QToolBar *, QMenuBar, QMenu, QLineEdit{
+    background-color: #222;
+    color: #0F3;
+}
+QToolBar {
+    spacing: 3px;
+    padding: 3px;
+}
+QMenu::item:enabled:selected, QToolBar *:enabled:hover, QTreeView, TDBMainWindow QPushButton{
+    background-color: rgb(255,255,255,25);
+}
+
+:disabled {
+    color: #080;
 }

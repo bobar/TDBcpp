@@ -25,7 +25,7 @@ class TDBApplication : public QApplication
 private:
     TDBDatabase* database;
 
-    QString dbc, abc, default_trig;
+    QString ds, as, default_trig;
 
 public:
     TDBApplication (int argc, char ** argv);
