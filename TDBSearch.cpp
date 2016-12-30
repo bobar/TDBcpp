@@ -1,4 +1,5 @@
 #include "TDBSearch.h"
+#include "unused.h"
 
 TDBSearch::TDBSearch(QWidget* parent) :
     QDialog(parent)
@@ -53,7 +54,7 @@ QString TDBSearch::trigramme()
     return search_list->currentItem()->text(0);
 }
 
-void TDBSearch::trigramme_double_clicked(QTreeWidgetItem * item, int column)
+void TDBSearch::trigramme_double_clicked(QTreeWidgetItem * UNUSED(item), int column)
 {
     if (column >= 0)
         accept();

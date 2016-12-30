@@ -1,10 +1,11 @@
 #include "TDBTrigrammeValidator.h"
+#include "unused.h"
 
 TDBTrigrammeValidator::TDBTrigrammeValidator(QObject* parent) : QValidator(parent)
 {
 }
 
-QValidator::State TDBTrigrammeValidator::validate(QString & input, int & pos) const
+QValidator::State TDBTrigrammeValidator::validate(QString & input, int & UNUSED(pos)) const
 {
     input = input.toUpper();
 

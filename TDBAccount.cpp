@@ -1,4 +1,5 @@
 #include "TDBAccount.h"
+#include "unused.h"
 
 TDBAccount::TDBAccount(const QString& tri) throw (TDBTrigrammeInconnuException)
 {
@@ -219,7 +220,7 @@ void TDBAccount::erase()
     TDBDatabase::close();
 }
 
-void TDBAccount::sendmail(QString subject, QString body)
+void TDBAccount::sendmail(QString UNUSED(subject), QString UNUSED(body))
 {
     /*
     if (eMail.isEmpty())
