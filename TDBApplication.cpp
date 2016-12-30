@@ -30,7 +30,7 @@ int TDBApplication::parse()
 
 
     // enfin le vrai boulot
-    QString host, db, login, base_colors, alt_colors;
+    QString host("localhost"), db("tdb"), login("root"), base_colors, alt_colors;
     bool no_alternate_crap = false, night_style = false;
 
     QRegExp help("--?h(elp)?", Qt::CaseInsensitive);
@@ -107,7 +107,7 @@ int TDBApplication::parse()
     }
 
     // gestion base de données
-    this->database = new TDBDatabase(host, db, login);
+    TDBDatabase::setup_db(host, db, login, QString());
 
     // on créé les style sheets en fonction de ce qui a été donné
     if(!no_alternate_crap && alt_colors.isEmpty())
@@ -201,7 +201,7 @@ void TDBApplication::critical(QWidget* parent, QString text)
 TDBApplication::~TDBApplication()
 {
     TDBDatabase::close(true);
-    delete database;
+    TDBDatabase::remove_db();
 }
 
 QString TDBApplication::default_style()

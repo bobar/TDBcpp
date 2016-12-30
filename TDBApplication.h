@@ -23,8 +23,6 @@ class TDBApplication : public QApplication
     Q_OBJECT
 
 private:
-    TDBDatabase* database;
-
     QString ds, as, default_trig;
 
 public:

@@ -1,34 +1,36 @@
 #include "TDBDatabase.h"
 
-TDBDatabase* default_db;
-
+TDBDatabase *TDBDatabase::default_db = NULL;
 int TDBDatabase::open_count = 0;
 
-TDBDatabase::TDBDatabase(QString host, QString database, QString login) : db (QSqlDatabase::addDatabase("QMYSQL"))
+TDBDatabase::TDBDatabase(QString host, QString database, QString login, QString password)
+    : db (QSqlDatabase::addDatabase("QMYSQL"))
 {
-    QString pw("mythemec");
-    if(!host.isNull() || !database.isNull() || !login.isNull())
+    if (host.isNull() || login.isNull() || database.isNull())
+        qFatal("Error in database information");
+
+    if(password.isNull())
     {
         TDBPasswordDialog pwd;
         pwd.exec();
-        pw = pwd.get_pw();
+        password = pwd.get_pw();
     }
 
-    db.setDatabaseName(database.isNull()?"tdb":database);
-    db.setUserName(login.isNull()?"bobar":login);
-    db.setPassword(pw);
-    db.setHostName(host.isNull()?"localhost":host);
-    default_db = this;
+    db.setDatabaseName(database);
+    db.setUserName(login);
+    db.setPassword(password);
+    db.setHostName(host);
 }
 
 void TDBDatabase::open()
 {
-    bool act = false;
+    if (default_db == NULL)
+        qFatal("Default db was not set\n");
+
     // need to open
     if(TDBDatabase::open_count == 0 || !default_db->db.isOpen())
     {
         TDBDatabase::open_count = 0;
-        act = true;
 
         if (!default_db->db.open())
         {
@@ -43,7 +45,6 @@ void TDBDatabase::open()
 
 void TDBDatabase::close(bool force)
 {
-    bool act = false;
     // leave open
     if(!force && TDBDatabase::open_count > 1 && default_db->db.isOpen())
         TDBDatabase::open_count--;
@@ -55,7 +56,6 @@ void TDBDatabase::close(bool force)
         if(force || TDBDatabase::open_count <= 1)
         {
             default_db->db.close();
-            act = true;
         }
 
         TDBDatabase::open_count = 0;
@@ -64,5 +64,5 @@ void TDBDatabase::close(bool force)
 
 TDBDatabase::~TDBDatabase()
 {
-    default_db = 0;
+    default_db = NULL;
 }
