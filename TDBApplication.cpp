@@ -1,6 +1,6 @@
 #include "TDBApplication.h"
 
-TDBApplication::TDBApplication(int argc, char ** argv) :
+TDBApplication::TDBApplication(int & argc, char ** argv) :
         QApplication (argc, argv)
 {
     //QLocale::setDefault(QLocale::c());

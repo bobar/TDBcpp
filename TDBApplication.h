@@ -28,7 +28,7 @@ private:
     QString ds, as, default_trig;
 
 public:
-    TDBApplication (int argc, char ** argv);
+    TDBApplication (int & argc, char ** argv);
     ~TDBApplication ();
 
     int parse();
