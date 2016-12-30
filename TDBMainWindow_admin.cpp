@@ -2,7 +2,7 @@
 
 void TDBMainWindow::reset_turnover()
 {
-	TDBDatabase::open();
+    TDBDatabase::open();
 
     QSqlQuery query;
 
@@ -22,7 +22,7 @@ void TDBMainWindow::reset_turnover()
     }
     update_money_display();
 
-	TDBDatabase::close();
+    TDBDatabase::close();
 }
 
 void TDBMainWindow::export_database()
@@ -54,8 +54,8 @@ void TDBMainWindow::export_database()
 
     file_tri.open(QIODevice::WriteOnly);
     QTextStream out_tri(&file_tri);
-	
-	TDBDatabase::open();
+
+    TDBDatabase::open();
 
     QSqlQuery query;
     query.prepare("SELECT * FROM accounts");
@@ -151,7 +151,7 @@ void TDBMainWindow::export_database()
         query.exec();
     }
 
-	TDBDatabase::close();
+    TDBDatabase::close();
 }
 
 void TDBMainWindow::export_trigramme()
@@ -186,8 +186,8 @@ void TDBMainWindow::export_trigramme()
 
     file_tri.open(QIODevice::WriteOnly);
     QTextStream out_tri(&file_tri);
-	
-	TDBDatabase::open();
+
+    TDBDatabase::open();
 
     QSqlQuery query;
     query.prepare("SELECT * FROM accounts WHERE trigramme = :trigramme");
@@ -235,7 +235,7 @@ void TDBMainWindow::export_trigramme()
         out_tri<<query.record().value(count).toString()<<"\n";
     }
 
-	TDBDatabase::close();
+    TDBDatabase::close();
 
     file_tri.close();
 }
@@ -270,8 +270,8 @@ void TDBMainWindow::export_positivation()
 
     file_tri.open(QIODevice::WriteOnly);
     QTextStream out_tri(&file_tri);
-	
-	TDBDatabase::open();
+
+    TDBDatabase::open();
 
     QSqlQuery query;
     query.prepare("SELECT trigramme, name, first_name, nickname, promo, balance/100, casert FROM accounts WHERE balance < :seuil AND trigramme != 'BOB' AND status = 0 ORDER BY balance ASC");
@@ -301,5 +301,5 @@ void TDBMainWindow::export_positivation()
 
     file_tri.close();
 
-	TDBDatabase::close();
+    TDBDatabase::close();
 }

@@ -31,8 +31,8 @@ public:
     TDBApplication (int argc, char ** argv);
     ~TDBApplication ();
 
-	int parse();
-	void usage(QString name);
+    int parse();
+    void usage(QString name);
 
     static int auth(QWidget* parent, int auth_level);
     static void critical(QWidget* parent, QString text);

@@ -341,21 +341,21 @@ void TDBMainWindow::achat(QString initial)
     {
 
         /*
-        if ((trans_dialog.money() > current_account->get_balance()))
-        {
-        	QString text;
-        	text.append(current_account->get_first_name())
-        	  .append(" ")
-        	  .append(current_account->get_name())
-        	  .append(" est en négatif");
+           if ((trans_dialog.money() > current_account->get_balance()))
+           {
+           QString text;
+           text.append(current_account->get_first_name())
+           .append(" ")
+           .append(current_account->get_name())
+           .append(" est en négatif");
 
-        	pid_t pid = fork();
-        	if (pid == 0)
-        	{
-        		execlp("aoss", "aoss", "espeak", "-vfr",
-        		   text.toAscii().constData(), NULL);
-        	}
-        }*/
+           pid_t pid = fork();
+           if (pid == 0)
+           {
+           execlp("aoss", "aoss", "espeak", "-vfr",
+           text.toAscii().constData(), NULL);
+           }
+           }*/
 
         if (trans_dialog.money() < 0 || trans_dialog.money() > 2000 || // ça évite la merde
                 (trans_dialog.money() > current_account->get_balance() &&
@@ -364,10 +364,10 @@ void TDBMainWindow::achat(QString initial)
             {
                 admin_id = TDBApplication::auth(this, ami_du_bob);
             }
-            catch (TDBAuthException e)
-            {
-                return;
-            }
+        catch (TDBAuthException e)
+        {
+            return;
+        }
 
         if (current_account->transaction(- trans_dialog.money(), trans_dialog.reason(), current_bank_account, admin_id))
         {
@@ -543,23 +543,23 @@ void TDBMainWindow::update_money_display()
     double money = (double)current_account->get_balance();
     if (money < 0.0)
         label_balance->setText(QString("<font size=+10><b style=\"color: red\">%1</b></font>")
-                               .arg((double)current_account->get_balance()/100, 0, 'f', 2));
+                .arg((double)current_account->get_balance()/100, 0, 'f', 2));
     else
         label_balance->setText(QString("<font size=+10><b>%1</b></font>")
-                               .arg((double)current_account->get_balance()/100, 0, 'f', 2));
+                .arg((double)current_account->get_balance()/100, 0, 'f', 2));
 
     label_turnover->setText(QString("%1e dépensés depuis dernier reset")
-                            .arg((double)current_account->get_turnover()/100, 0, 'f', 2));
+            .arg((double)current_account->get_turnover()/100, 0, 'f', 2));
 }
 
 void TDBMainWindow::update()
 {
     label_trigramme->setText(QString("<font size=+5><b>%1</b></font>")
-                             .arg(current_account->get_trigramme()));
+            .arg(current_account->get_trigramme()));
 
     QString label_text = QString("<font size=+2><b>%1 %2 ")
-                         .arg(current_account->get_name())
-                         .arg(current_account->get_first_name());
+        .arg(current_account->get_name())
+        .arg(current_account->get_first_name());
 
     if (current_account->get_nickname().size() > 0)
         label_text.append(QString("(%1) ").arg(current_account->get_nickname()));
@@ -716,14 +716,14 @@ void TDBMainWindow::delete_trigramme()
         return;
 
     bool ok = (QMessageBox::question (this, "TDB",
-                                      QString("Effacer le trigramme ")
-                                      .append(current_account->get_trigramme())
-                                      .append(" (")
-                                      .append(current_account->get_name())
-                                      .append(" ")
-                                      .append(current_account->get_first_name())
-                                      .append(") ?"),
-                                      QMessageBox::Yes | QMessageBox::No) ==  QMessageBox::Yes);
+                QString("Effacer le trigramme ")
+                .append(current_account->get_trigramme())
+                .append(" (")
+                .append(current_account->get_name())
+                .append(" ")
+                .append(current_account->get_first_name())
+                .append(") ?"),
+                QMessageBox::Yes | QMessageBox::No) ==  QMessageBox::Yes);
 
     if (!ok)
         return;
@@ -776,10 +776,10 @@ void TDBMainWindow::achat_clopes()
         {
             admin_id = TDBApplication::auth(this, ami_du_bob);
         }
-        catch (TDBAuthException e)
-        {
-            return;
-        }
+    catch (TDBAuthException e)
+    {
+        return;
+    }
 
     if (current_account->transaction(-achclopes.money(), achclopes.get_marque(), default_bank_account, admin_id))
     {
@@ -864,8 +864,8 @@ void TDBMainWindow::batch_achats()
             out << (QString)javaIter.next() << "\n";
 
         QMessageBox::information((QWidget*)this, QString("Trigrammes non débités"),
-                                 QString("Lignes ignorées %1 lignes ont été ignorées et stockées dans le fichier :\n%2").arg(lines.size()).arg(rejected.fileName())
-                                );
+                QString("Lignes ignorées %1 lignes ont été ignorées et stockées dans le fichier :\n%2").arg(lines.size()).arg(rejected.fileName())
+                );
     }
 
     history->update(current_account);
@@ -915,89 +915,89 @@ void TDBMainWindow::cancel()
     cancel_action->setEnabled(false);
 }
 /*
-void TDBMainWindow::son()
-{
-  QString path = "/home/bobar/tdb2/sons/";
-  QDir rep(path);
-  QStringList files = rep.entryList();
+   void TDBMainWindow::son()
+   {
+   QString path = "/home/bobar/tdb2/sons/";
+   QDir rep(path);
+   QStringList files = rep.entryList();
 
-  if (files.size() > 2)
-    {
+   if (files.size() > 2)
+   {
 
-      int f = rand()%(files.size() -2);
-      pid_t pid = fork();
-      if (pid == 0)
-	{
-	  execlp("ogg123", "ogg123", path.append(files[f+2]).toAscii().constData(), NULL);
-	}
-    }
-}
+   int f = rand()%(files.size() -2);
+   pid_t pid = fork();
+   if (pid == 0)
+   {
+   execlp("ogg123", "ogg123", path.append(files[f+2]).toAscii().constData(), NULL);
+   }
+   }
+   }
 
-void TDBMainWindow::zde()
-{
-      pid_t pid = fork();
-      if (pid == 0)
-	{
-	  execlp("ogg123", "ogg123", "/home/bobar/tdb2/sons/zde.ogg", NULL);
-	}
-}
+   void TDBMainWindow::zde()
+   {
+   pid_t pid = fork();
+   if (pid == 0)
+   {
+   execlp("ogg123", "ogg123", "/home/bobar/tdb2/sons/zde.ogg", NULL);
+   }
+   }
 
-void TDBMainWindow::mathis()
-{
-      pid_t pid = fork();
-      if (pid == 0)
-	{
-	  execlp("ogg123", "ogg123", "/home/bobar/tdb2/sons/mathis.ogg", NULL);
-	}
-	}
+   void TDBMainWindow::mathis()
+   {
+   pid_t pid = fork();
+   if (pid == 0)
+   {
+   execlp("ogg123", "ogg123", "/home/bobar/tdb2/sons/mathis.ogg", NULL);
+   }
+   }
 
-void TDBMainWindow::pch()
-{
-      pid_t pid = fork();
-      if (pid == 0)
-	{
-	  execlp("ogg123", "ogg123", "/home/bobar/tdb2/sons/pchhh.ogg", NULL);
-	}
-}
-*/
+   void TDBMainWindow::pch()
+   {
+   pid_t pid = fork();
+   if (pid == 0)
+   {
+   execlp("ogg123", "ogg123", "/home/bobar/tdb2/sons/pchhh.ogg", NULL);
+   }
+   }
+   */
 void TDBMainWindow::mail()
 {
     //current_account->sendmail("Sujet", "Body\n");
 }
 /*
-void TDBMainWindow::etron_changed(int state)
-{
-  toggle_etron_action->setEnabled(true);
-  switch(state)
-    {
-    case -1:
-      toggle_etron_action->setText("Étron indisponible");
-      break;
-    case 0:
-      toggle_etron_action->setText("Ouvrir le BôB");
-      break;
-    case 1:
-      toggle_etron_action->setText("Fermer le BôB");
-      break;
-    }
-}
-*/
+   void TDBMainWindow::etron_changed(int state)
+   {
+   toggle_etron_action->setEnabled(true);
+   switch(state)
+   {
+   case -1:
+   toggle_etron_action->setText("Étron indisponible");
+   break;
+   case 0:
+   toggle_etron_action->setText("Ouvrir le BôB");
+   break;
+   case 1:
+   toggle_etron_action->setText("Fermer le BôB");
+   break;
+   }
+   }
+   */
 /*
-void TDBMainWindow::all_lights_on()
-{
-      pid_t pid = fork();
-      if (pid == 0)
-	{
-	  execlp("heyu", "heyu", "allon", "A", NULL);
-	}
-}
+   void TDBMainWindow::all_lights_on()
+   {
+   pid_t pid = fork();
+   if (pid == 0)
+   {
+   execlp("heyu", "heyu", "allon", "A", NULL);
+   }
+   }
 
-void TDBMainWindow::all_lights_off()
-{
-      pid_t pid = fork();
-      if (pid == 0)
-	{
-	  execlp("heyu", "heyu", "alloff", "A", NULL);
-	}
-}
-*/
+   void TDBMainWindow::all_lights_off()
+   {
+   pid_t pid = fork();
+   if (pid == 0)
+   {
+   execlp("heyu", "heyu", "alloff", "A", NULL);
+   }
+   }
+   */

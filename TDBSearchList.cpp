@@ -15,7 +15,7 @@ TDBSearchList::~TDBSearchList ()
 
 void TDBSearchList::fill (QString string)
 {
-	TDBDatabase::open();
+    TDBDatabase::open();
 
     QSqlQuery query;
     query.prepare("SELECT trigramme, name, first_name, nickname, promo FROM accounts WHERE name LIKE :name OR first_name LIKE :fn OR nickname LIKE :nm");
@@ -35,7 +35,7 @@ void TDBSearchList::fill (QString string)
         insert_item(query);
     }
 
-	TDBDatabase::close();
+    TDBDatabase::close();
 }
 
 void TDBSearchList::insert_item(QSqlQuery& query)

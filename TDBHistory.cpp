@@ -6,7 +6,7 @@ TDBHistory::TDBHistory (QWidget* parent) : QTreeWidget(parent)
     QStringList header_strings;
     header_strings << "Montant" << "Compte" << "Commentaire" << "Admin" << "Date";
     setHeaderLabels(header_strings);
-	
+
     setSelectionMode(QAbstractItemView::SingleSelection);
     setSelectionBehavior(QAbstractItemView::SelectRows);
 
@@ -20,7 +20,7 @@ void TDBHistory::fill (TDBAccount* account)
     // affichage par défaut, effort minimal puisque la fenêtre doit être vide actuellement
     sortByColumn(-1);
 
-	TDBDatabase::open();
+    TDBDatabase::open();
 
     QSqlQuery query;
     query.prepare("SELECT price, transactions.id, id2, comment, admin, date, accounts.trigramme as tr2 FROM transactions LEFT JOIN accounts ON accounts.id = transactions.id2 WHERE transactions.id = :id1"
@@ -35,7 +35,7 @@ void TDBHistory::fill (TDBAccount* account)
     while (query.next())
         insert_item(query);
 
-	TDBDatabase::close();
+    TDBDatabase::close();
 }
 
 void TDBHistory::update (TDBAccount* account)
@@ -58,7 +58,7 @@ void TDBHistory::insert_item(QSqlQuery& query)
     // si un admin est intervenu dans cette ligne d'historique, on récupère son trigramme pour l'afficher.
     if (admin_id)
     {
-		TDBDatabase::open();
+        TDBDatabase::open();
 
         QSqlQuery admin_query;
         admin_query.prepare("SELECT trigramme FROM accounts WHERE id = :id");
@@ -67,7 +67,7 @@ void TDBHistory::insert_item(QSqlQuery& query)
         admin_query.first();
         admin = admin_query.record().value("trigramme").toString();
 
-		TDBDatabase::close();
+        TDBDatabase::close();
     }
     else
         admin = "";

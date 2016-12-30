@@ -9,7 +9,7 @@
 #include <QComboBox>
 #include <QDoubleValidator>
 #include <QIntValidator>
-#include <QSqlQuery> 
+#include <QSqlQuery>
 #include <QSqlRecord>
 
 #include "TDBApplication.h"
@@ -18,27 +18,27 @@
 
 class TDBClopesModification : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
- private:
-  QGridLayout* layout;
-  QLabel* marque_label;
-  QLabel* prix_label;
-  QLineEdit* marque_edit;
-  QLineEdit* prix_edit;
+    private:
+        QGridLayout* layout;
+        QLabel* marque_label;
+        QLabel* prix_label;
+        QLineEdit* marque_edit;
+        QLineEdit* prix_edit;
 
-  QPushButton* ok_button;
-  QPushButton* cancel_button;
+        QPushButton* ok_button;
+        QPushButton* cancel_button;
 
-  QString marque;
+        QString marque;
 
- public:
-  TDBClopesModification(QWidget* parent, QString m);
-  ~TDBClopesModification();
+    public:
+        TDBClopesModification(QWidget* parent, QString m);
+        ~TDBClopesModification();
 
-  private slots:
-  void ok_pressed();
-  void cancel_pressed();
+        private slots:
+            void ok_pressed();
+        void cancel_pressed();
 };
 
 #endif

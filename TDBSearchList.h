@@ -4,9 +4,9 @@
 #include <QObject>
 #include <QTreeWidget>
 #include <QEvent>
-#include <QSqlQuery> 
+#include <QSqlQuery>
 #include <QStringList>
-#include <QSqlRecord> 
+#include <QSqlRecord>
 
 #include "TDBApplication.h"
 
@@ -15,14 +15,14 @@
 
 class TDBSearchList : public QTreeWidget
 {
- private:
-  void insert_item(QSqlQuery& query);
- public:
-  TDBSearchList(QWidget* parent);
-  ~TDBSearchList();
+    private:
+        void insert_item(QSqlQuery& query);
+    public:
+        TDBSearchList(QWidget* parent);
+        ~TDBSearchList();
 
-  void fill(QString string);
-  QString current_trigramme();
+        void fill(QString string);
+        QString current_trigramme();
 };
 
 #endif

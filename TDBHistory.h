@@ -1,9 +1,9 @@
 #ifndef TDBHISTORY_H
 #define TDBHISTORY_H
 
-#include <QSqlQuery> 
+#include <QSqlQuery>
 #include <QStringList>
-#include <QSqlRecord> 
+#include <QSqlRecord>
 #include <QDateTime>
 #include <QTreeWidget>
 #include <QEvent>

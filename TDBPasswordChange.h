@@ -5,10 +5,10 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QLineEdit>
-#include <QSqlQuery> 
+#include <QSqlQuery>
 #include <QString>
 #include <QVariant>
-#include <QSqlRecord> 
+#include <QSqlRecord>
 #include <QCryptographicHash>
 #include <QByteArray>
 #include <QDialog>
@@ -19,27 +19,27 @@
 
 class TDBPasswordChange : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
- private:
-  int id;
+    private:
+        int id;
 
-  QGridLayout* layout;
-  QLabel* passwd1_label;
-  QLabel* passwd2_label;
-  QLineEdit* passwd1_edit;
-  QLineEdit* passwd2_edit;
+        QGridLayout* layout;
+        QLabel* passwd1_label;
+        QLabel* passwd2_label;
+        QLineEdit* passwd1_edit;
+        QLineEdit* passwd2_edit;
 
-  QPushButton* ok_button;
-  QPushButton* cancel_button;
+        QPushButton* ok_button;
+        QPushButton* cancel_button;
 
- public:
-  TDBPasswordChange(QWidget* parent, int i);
-  ~TDBPasswordChange();
+    public:
+        TDBPasswordChange(QWidget* parent, int i);
+        ~TDBPasswordChange();
 
-  public slots:
-  void ok_pressed();
-  void cancel_pressed();
+        public slots:
+            void ok_pressed();
+        void cancel_pressed();
 };
 
 #endif

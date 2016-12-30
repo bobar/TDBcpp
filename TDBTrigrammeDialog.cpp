@@ -6,10 +6,10 @@ TDBTrigrammeDialog::TDBTrigrammeDialog(QWidget* parent, QString initial) :
     setWindowTitle("Trigramme");
     valid = new TDBTrigrammeValidator(this);
     label = new QLabel("Trigramme", this);
-	
-    trigramme_edit = new QLineEdit(this); 
-	trigramme_edit->setText( initial.toUpper() );
-	
+
+    trigramme_edit = new QLineEdit(this);
+    trigramme_edit->setText( initial.toUpper() );
+
     trigramme_edit->setValidator(valid);
 
     connect(trigramme_edit, SIGNAL(textChanged(QString)),
@@ -22,10 +22,10 @@ TDBTrigrammeDialog::TDBTrigrammeDialog(QWidget* parent, QString initial) :
     setLayout(layout);
 
 #if win32
-	// fait bugger sous 'nux, pas moyen d'avoir le curseur sans sélectionner
+    // fait bugger sous 'nux, pas moyen d'avoir le curseur sans sélectionner
     trigramme_edit->setFocus(Qt::PopupFocusReason);
 #endif
-	trigramme_edit->setCursorPosition( initial.length() );
+    trigramme_edit->setCursorPosition( initial.length() );
 }
 
 TDBTrigrammeDialog::~TDBTrigrammeDialog()

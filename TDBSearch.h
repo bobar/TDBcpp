@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-#include <QSqlQuery> 
-#include <QSqlRecord> 
+#include <QSqlQuery>
+#include <QSqlRecord>
 #include <QDialog>
 #include <QLabel>
 #include <QPushButton>
@@ -17,29 +17,29 @@
 
 class TDBSearch : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
- TDBSearchList* search_list;
+    TDBSearchList* search_list;
 
- private:
+    private:
 
-  QLineEdit* search_string;
-  QPushButton* ok_button;
-  QPushButton* cancel_button;
-  QPushButton* search_button;
-  QVBoxLayout* vlayout;
+    QLineEdit* search_string;
+    QPushButton* ok_button;
+    QPushButton* cancel_button;
+    QPushButton* search_button;
+    QVBoxLayout* vlayout;
 
- public:
+    public:
 
-   TDBSearch(QWidget* parent);
-  ~TDBSearch();
-  QString trigramme();
+    TDBSearch(QWidget* parent);
+    ~TDBSearch();
+    QString trigramme();
 
-  private slots:
-  void ok_pressed();
-  void search_pressed();
-  void cancel_pressed();
-  void trigramme_double_clicked(QTreeWidgetItem * item, int column);
+    private slots:
+        void ok_pressed();
+    void search_pressed();
+    void cancel_pressed();
+    void trigramme_double_clicked(QTreeWidgetItem * item, int column);
 };
 
 #endif

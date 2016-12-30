@@ -13,22 +13,22 @@
 
 class TDBTrigrammeDialog : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
- private:
+    private:
 
-  QVBoxLayout* layout;
-  QLabel* label;
-  QLineEdit* trigramme_edit;
-  QValidator* valid;
+        QVBoxLayout* layout;
+        QLabel* label;
+        QLineEdit* trigramme_edit;
+        QValidator* valid;
 
- public:
-  TDBTrigrammeDialog(QWidget* parent, QString initial = QString());
-  ~TDBTrigrammeDialog();
-  QString trigramme();
+    public:
+        TDBTrigrammeDialog(QWidget* parent, QString initial = QString());
+        ~TDBTrigrammeDialog();
+        QString trigramme();
 
-  public slots:
-  void trigrammeChanged(QString trigramme);  // pour envoyer le trigramme quand on atteint 3 lettres
+        public slots:
+            void trigrammeChanged(QString trigramme);  // pour envoyer le trigramme quand on atteint 3 lettres
 };
 
 #endif

@@ -2,7 +2,7 @@
 
 TDBAccount::TDBAccount(const QString& tri) throw (TDBTrigrammeInconnuException)
 {
-	TDBDatabase::open();
+    TDBDatabase::open();
     QSqlQuery query;
     query.prepare("SELECT * from accounts WHERE trigramme = :trigramme");  // je crois que c'est moche en fait
     query.bindValue(":trigramme", tri);
@@ -12,7 +12,7 @@ TDBAccount::TDBAccount(const QString& tri) throw (TDBTrigrammeInconnuException)
         throw TDBTrigrammeInconnuException(tri);
     }
     QSqlRecord record = query.record();
-	TDBDatabase::close();
+    TDBDatabase::close();
 
     trigramme = tri;
     id = record.value("id").toInt();
@@ -41,8 +41,8 @@ TDBAccount::TDBAccount(const QString& tri,
         id(0), trigramme(tri), name(n), first_name(fn), nickname(nn), category(cat),
         casert(cst), balance(init_bal), promo(p), eMail(mail), picture(pct)
 {
-	TDBDatabase::open();
-	
+    TDBDatabase::open();
+
     QSqlQuery query;
     query.prepare("SELECT MAX(id) as maxid FROM accounts;");
     query.exec();
@@ -68,13 +68,13 @@ TDBAccount::TDBAccount(const QString& tri,
 
     if (!query.exec())
         throw TDBTrigrammeExistantException(tri);
-		
-	TDBDatabase::close();
+
+    TDBDatabase::close();
 }
 
 bool TDBAccount::transaction(int money, QString reason, TDBAccount* dest_account, int admin_id)
 {
-	// TODO ici parfois le TDBAccount dest_account jean-jacques durablement -- meilleure vérifications à faire ?
+    // TODO ici parfois le TDBAccount dest_account jean-jacques durablement -- meilleure vérifications à faire ?
     if (id == dest_account->id || dest_account->id == 0)
         return false;
 
@@ -90,17 +90,17 @@ bool TDBAccount::transaction(int money, QString reason, TDBAccount* dest_account
 
     balance += money;
     dest_account->balance -= money;
-	
-	if( (money > 0) xor (reason == "Annulation") )
-		turnover += money;
-	else
-		dest_account->turnover += money;
+
+    if( (money > 0) xor (reason == "Annulation") )
+        turnover += money;
+    else
+        dest_account->turnover += money;
 
     //QSqlDatabase::database().transaction();
 
 
-	TDBDatabase::open();
-	
+    TDBDatabase::open();
+
     QSqlQuery query1(QSqlDatabase::database());
     query1.prepare("UPDATE accounts SET balance = balance + (:delta) WHERE id = :id");
     query1.bindValue(":delta", money);
@@ -123,24 +123,24 @@ bool TDBAccount::transaction(int money, QString reason, TDBAccount* dest_account
     query3.bindValue(":id", dest_account->id);
     query3.exec();
 
-	if(reason != "Annulation")
-	{
-		QSqlQuery query4(QSqlDatabase::database());
-		query4.prepare("UPDATE accounts SET turnover = turnover + ABS(:delta) WHERE id = :id");
-		query4.bindValue(":delta", money);
-		query4.bindValue(":id", money>0?id:dest_account->id);
-		query4.exec();
-	}
-	else
-	{
-		QSqlQuery query4(QSqlDatabase::database());
-		query4.prepare("UPDATE accounts SET turnover = turnover - ABS(:delta) WHERE id = :id");
-		query4.bindValue(":delta", money);
-		query4.bindValue(":id", money<0?id:dest_account->id);
-		query4.exec();
-	}
+    if(reason != "Annulation")
+    {
+        QSqlQuery query4(QSqlDatabase::database());
+        query4.prepare("UPDATE accounts SET turnover = turnover + ABS(:delta) WHERE id = :id");
+        query4.bindValue(":delta", money);
+        query4.bindValue(":id", money>0?id:dest_account->id);
+        query4.exec();
+    }
+    else
+    {
+        QSqlQuery query4(QSqlDatabase::database());
+        query4.prepare("UPDATE accounts SET turnover = turnover - ABS(:delta) WHERE id = :id");
+        query4.bindValue(":delta", money);
+        query4.bindValue(":id", money<0?id:dest_account->id);
+        query4.exec();
+    }
 
-	TDBDatabase::close();
+    TDBDatabase::close();
 
     // QSqlDatabase::database().rollback();
 
@@ -149,20 +149,20 @@ bool TDBAccount::transaction(int money, QString reason, TDBAccount* dest_account
 
 void TDBAccount::refresh_money()
 {
-	TDBDatabase::open();
-	
+    TDBDatabase::open();
+
     QSqlQuery query;
     query.prepare("SELECT balance,turnover FROM accounts WHERE id = :id");
     query.bindValue(":id", id);
     query.exec();
-	
+
     query.first();
     QSqlRecord record = query.record();
-	
+
     balance = record.value("balance").toInt();
     turnover = record.value("turnover").toInt();
-	
-	TDBDatabase::close();
+
+    TDBDatabase::close();
 }
 
 
@@ -185,8 +185,8 @@ void TDBAccount::modif(const QString& tri,
     promo = p;
     eMail = mail;
     picture = pct;
-	
-	TDBDatabase::open();
+
+    TDBDatabase::open();
 
     QSqlQuery query;
     query.prepare("UPDATE accounts SET trigramme = :trigramme, name = :name, first_name = :first_name, nickname = :nickname, status = :status, casert = :casert, promo = :promo, mail = :mail, picture = :picture WHERE id = :id");  // je crois que c'est moche en fait
@@ -203,31 +203,31 @@ void TDBAccount::modif(const QString& tri,
 
     if (!query.exec())
         throw TDBTrigrammeException(tri);
-	
-	TDBDatabase::close();
+
+    TDBDatabase::close();
 }
 
 void TDBAccount::erase()
 {
-	TDBDatabase::open();
-	
+    TDBDatabase::open();
+
     QSqlQuery query;
     query.prepare("DELETE FROM accounts WHERE id = :id");
     query.bindValue(":id", id);
     query.exec();
-	
-	TDBDatabase::close();
+
+    TDBDatabase::close();
 }
 
 void TDBAccount::sendmail(QString subject, QString body)
 {
     /*
     if (eMail.isEmpty())
-      {
+    {
         QMessageBox::critical(0, QString("Envoi de mail"),
-      		    QString("Le compte n'a pas d'adresse mail."));
+                  QString("Le compte n'a pas d'adresse mail."));
         return;
-      }
+    }
 
     FILE* pipe = popen(QString("msmtp ").append(eMail).toAscii().constData(), "w");
 

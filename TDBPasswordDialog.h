@@ -14,25 +14,25 @@
 
 class TDBPasswordDialog : public QDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 
 private:
-	QGridLayout* layout;
-	QLabel* passwd_label;
-	QLineEdit* passwd_edit;
-	QString pw;
+    QGridLayout* layout;
+    QLabel* passwd_label;
+    QLineEdit* passwd_edit;
+    QString pw;
 
-	QPushButton* ok_button;
-	QPushButton* cancel_button;
+    QPushButton* ok_button;
+    QPushButton* cancel_button;
 
 public:
-	TDBPasswordDialog(QWidget* parent = 0);
-	~TDBPasswordDialog();
+    TDBPasswordDialog(QWidget* parent = 0);
+    ~TDBPasswordDialog();
 
-	QString get_pw();
+    QString get_pw();
 
 public slots:
-	void ok_pressed();
+    void ok_pressed();
 };
 
 #endif

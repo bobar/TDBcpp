@@ -112,7 +112,7 @@ void TDBTrigrammeModificationDialog::cancel_pressed()
 
 void TDBTrigrammeModificationDialog::ok_pressed()
 {
-	TDBDatabase::open();
+    TDBDatabase::open();
 
     QSqlQuery query;
     QSqlRecord record;
@@ -154,12 +154,12 @@ void TDBTrigrammeModificationDialog::ok_pressed()
     }
     catch (TDBTrigrammeException)
     {
-		TDBDatabase::close(true);
+        TDBDatabase::close(true);
     }
-    
-	TDBDatabase::close();
-	
-	accept();
+
+    TDBDatabase::close();
+
+    accept();
 }
 
 

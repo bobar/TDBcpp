@@ -1,13 +1,13 @@
 #ifndef TDBADMINLIST_H
 #define TDBADMINLIST_H
 
-#include <QSqlQuery> 
+#include <QSqlQuery>
 #include <QStringList>
-#include <QSqlRecord> 
+#include <QSqlRecord>
 #include <QObject>
 #include <QTreeWidget>
 #include <QEvent>
-#include <QSqlQuery> 
+#include <QSqlQuery>
 
 #include "TDBDatabase.h"
 #include "TDBApplication.h"
@@ -16,16 +16,16 @@
 
 class TDBAdminList : public QTreeWidget
 {
- private:
-  void insert_item(QSqlQuery& query);
-  void modify_admin(QString trigramme);
+    private:
+        void insert_item(QSqlQuery& query);
+        void modify_admin(QString trigramme);
 
- public:
-  TDBAdminList(QWidget* parent);
-  ~TDBAdminList();
+    public:
+        TDBAdminList(QWidget* parent);
+        ~TDBAdminList();
 
-  void fill();
-  void update();
+        void fill();
+        void update();
 };
 
 #endif

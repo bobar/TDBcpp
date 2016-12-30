@@ -5,10 +5,10 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QDoubleValidator>
-#include <QSqlQuery> 
+#include <QSqlQuery>
 #include <QString>
 #include <QVariant>
-#include <QSqlRecord> 
+#include <QSqlRecord>
 #include <QCryptographicHash>
 #include <QByteArray>
 #include <QDialog>
@@ -23,31 +23,31 @@
 
 class TDBAuthDialog : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
- private:
-  int admin;
-  int perm;
+    private:
+        int admin;
+        int perm;
 
-  QGridLayout* layout;
-  QLabel* trigramme_label;
-  QLabel* passwd_label;
-  QLineEdit* trigramme_edit;
-  QLineEdit* passwd_edit;
+        QGridLayout* layout;
+        QLabel* trigramme_label;
+        QLabel* passwd_label;
+        QLineEdit* trigramme_edit;
+        QLineEdit* passwd_edit;
 
-  QPushButton* ok_button;
-  QPushButton* cancel_button;
+        QPushButton* ok_button;
+        QPushButton* cancel_button;
 
- public:
-  TDBAuthDialog(QWidget* parent = 0);
-  ~TDBAuthDialog();
+    public:
+        TDBAuthDialog(QWidget* parent = 0);
+        ~TDBAuthDialog();
 
-  int get_admin();
-  int get_perm();
-  
-  public slots:
-  void ok_pressed();
-  void cancel_pressed();
+        int get_admin();
+        int get_perm();
+
+        public slots:
+            void ok_pressed();
+        void cancel_pressed();
 };
 
 #endif

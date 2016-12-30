@@ -128,7 +128,7 @@ public:
     {
         return picture;
     }
-	void refresh_money();
+    void refresh_money();
     void sendmail(QString subject, QString body);
 
     bool transaction(int money, QString reason, TDBAccount* dest_account, int admin_id);

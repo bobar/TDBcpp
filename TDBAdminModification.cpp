@@ -4,9 +4,9 @@ TDBAdminModification::TDBAdminModification(QWidget* parent, QString trigramme) :
         QDialog(parent)
 {
     int perm;
-  
-	TDBDatabase::open();
-	
+
+    TDBDatabase::open();
+
     QSqlQuery query;
     query.prepare("SELECT accounts.id as admin_id, permissions FROM admins LEFT JOIN accounts ON accounts.id = admins.id WHERE accounts.trigramme = :trigramme");
     query.bindValue(":trigramme", trigramme);
@@ -16,7 +16,7 @@ TDBAdminModification::TDBAdminModification(QWidget* parent, QString trigramme) :
     admin_id = query.record().value("admin_id").toInt();
     perm = query.record().value("permissions").toInt();
 
-	TDBDatabase::close();
+    TDBDatabase::close();
 
 
     setWindowTitle("Modification d'un admin");
@@ -71,7 +71,7 @@ void TDBAdminModification::ok_pressed()
 {
     int perm = perm_combo->itemData(perm_combo->currentIndex()).toInt();
 
-	TDBDatabase::open();
+    TDBDatabase::open();
 
     QSqlQuery query;
     query.prepare("UPDATE admins SET permissions = :perm WHERE id = :id");
@@ -89,7 +89,7 @@ void TDBAdminModification::ok_pressed()
         query.exec();
     }
 
-	TDBDatabase::close();
+    TDBDatabase::close();
 
     accept();
 }

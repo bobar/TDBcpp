@@ -14,7 +14,7 @@ class TDBDatabase
 {
 protected:
     QSqlDatabase db;
-	static int open_count;
+    static int open_count;
 
 public:
     bool transaction ()
@@ -25,8 +25,8 @@ public:
     {
         return db.commit();
     };
-	static void open();
-	static void close(bool force = false);
+    static void open();
+    static void close(bool force = false);
     TDBDatabase(QString host, QString database, QString login);
     ~TDBDatabase();
     //static TDBDatabase* default_db;

@@ -7,9 +7,9 @@
 
 class TDBTrigrammeValidator : public QValidator
 {
-	public:
-		TDBTrigrammeValidator(QObject* parent);
-		State validate(QString & input, int & pos) const;
+    public:
+        TDBTrigrammeValidator(QObject* parent);
+        State validate(QString & input, int & pos) const;
 };
 
 #endif

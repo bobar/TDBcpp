@@ -5,8 +5,8 @@
 
 #include <QLabel>
 #include <QPushButton>
-#include <QSqlQuery> 
-#include <QSqlRecord> 
+#include <QSqlQuery>
+#include <QSqlRecord>
 #include <QDialog>
 #include <QVBoxLayout>
 
@@ -19,27 +19,27 @@
 
 class TDBClopesAdmin : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
- TDBClopesList* clopes_list;
+    TDBClopesList* clopes_list;
 
- private:
+    private:
 
-  QPushButton* ok_button;
-  QPushButton* mod_clopes_button;
-  QPushButton* create_clopes_button;
-  QPushButton* delete_clopes_button;
-   QVBoxLayout* vlayout;
- public:
+    QPushButton* ok_button;
+    QPushButton* mod_clopes_button;
+    QPushButton* create_clopes_button;
+    QPushButton* delete_clopes_button;
+    QVBoxLayout* vlayout;
+    public:
 
-   TDBClopesAdmin(QWidget* parent);
-  ~TDBClopesAdmin();
+    TDBClopesAdmin(QWidget* parent);
+    ~TDBClopesAdmin();
 
-  private slots:
-  void ok_pressed();
-  void mod_clopes_pressed();
-  void create_clopes_pressed();
-  void delete_clopes_pressed();
+    private slots:
+        void ok_pressed();
+    void mod_clopes_pressed();
+    void create_clopes_pressed();
+    void delete_clopes_pressed();
 };
 
 #endif

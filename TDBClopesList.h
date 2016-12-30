@@ -1,9 +1,9 @@
 #ifndef TDBCLOPESLIST_H
 #define TDBCLOPESLIST_H
 
-#include <QSqlQuery> 
+#include <QSqlQuery>
 #include <QStringList>
-#include <QSqlRecord> 
+#include <QSqlRecord>
 #include <QObject>
 #include <QTreeWidget>
 #include <QEvent>
@@ -15,16 +15,16 @@
 
 class TDBClopesList : public QTreeWidget
 {
- private:
-  void insert_item(QSqlQuery& query);
-  void modify_admin(QString trigramme);
+    private:
+        void insert_item(QSqlQuery& query);
+        void modify_admin(QString trigramme);
 
- public:
-  TDBClopesList(QWidget* parent);
-  ~TDBClopesList();
+    public:
+        TDBClopesList(QWidget* parent);
+        ~TDBClopesList();
 
-  void fill();
-  void update();
+        void fill();
+        void update();
 };
 
 #endif

@@ -26,19 +26,19 @@ public:
     TDBBatchDialog(QWidget* parent, QStringList* lines, TDBAccount* binet_, int admin_id_);
 
 private:
-	void process();
+    void process();
 
 private slots:
-	void valider();
-	void setSeparator(QString s);
+    void valider();
+    void setSeparator(QString s);
 
 protected:
     QChar educatedGuess();
-	QChar separator;
-	int admin_id;
-	TDBAccount*	binet_account;
+    QChar separator;
+    int admin_id;
+    TDBAccount*    binet_account;
 
-	QStringList* rawData;
+    QStringList* rawData;
 
     QGridLayout* layout;
     QLabel* separator_label;

@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-#include <QSqlQuery> 
+#include <QSqlQuery>
 #include <QVariant>
-#include <QSqlRecord> 
+#include <QSqlRecord>
 #include <QCryptographicHash>
 #include <QByteArray>
 #include <QDialog>
@@ -22,26 +22,26 @@
 
 class TDBClopesCreation : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
- private:
-  QGridLayout* layout;
-  QLabel* marque_label;
-  QLabel* prix_label;
+    private:
+        QGridLayout* layout;
+        QLabel* marque_label;
+        QLabel* prix_label;
 
-  QLineEdit* marque_edit;
-  QLineEdit* prix_edit;
+        QLineEdit* marque_edit;
+        QLineEdit* prix_edit;
 
-  QPushButton* ok_button;
-  QPushButton* cancel_button;
+        QPushButton* ok_button;
+        QPushButton* cancel_button;
 
- public:
-  TDBClopesCreation(QWidget* parent);
-  ~TDBClopesCreation();
+    public:
+        TDBClopesCreation(QWidget* parent);
+        ~TDBClopesCreation();
 
-  public slots:
-  void ok_pressed();
-  void cancel_pressed();
+        public slots:
+            void ok_pressed();
+        void cancel_pressed();
 };
 
 #endif

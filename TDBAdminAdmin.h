@@ -5,8 +5,8 @@
 
 #include <QLabel>
 #include <QPushButton>
-#include <QSqlQuery> 
-#include <QSqlRecord> 
+#include <QSqlQuery>
+#include <QSqlRecord>
 #include <QDialog>
 #include <QVBoxLayout>
 
@@ -19,27 +19,27 @@
 
 class TDBAdminAdmin : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
- TDBAdminList* admin_list;
+    TDBAdminList* admin_list;
 
- private:
+    private:
 
-  QPushButton* ok_button;
-  QPushButton* mod_admin_button;
-  QPushButton* create_admin_button;
-  QPushButton* delete_admin_button;
-   QVBoxLayout* vlayout;
- public:
+    QPushButton* ok_button;
+    QPushButton* mod_admin_button;
+    QPushButton* create_admin_button;
+    QPushButton* delete_admin_button;
+    QVBoxLayout* vlayout;
+    public:
 
-   TDBAdminAdmin(QWidget* parent);
-  ~TDBAdminAdmin();
+    TDBAdminAdmin(QWidget* parent);
+    ~TDBAdminAdmin();
 
-  private slots:
-  void ok_pressed();
-  void mod_admin_pressed();
-  void create_admin_pressed();
-  void delete_admin_pressed();
+    private slots:
+        void ok_pressed();
+    void mod_admin_pressed();
+    void create_admin_pressed();
+    void delete_admin_pressed();
 };
 
 #endif
