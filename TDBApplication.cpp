@@ -3,9 +3,6 @@
 TDBApplication::TDBApplication(int & argc, char ** argv) :
         QApplication (argc, argv)
 {
-    //QLocale::setDefault(QLocale::c());
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("utf-8"));
-
     // default stuff
     default_trig = "BOB";
 }

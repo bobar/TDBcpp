@@ -7,7 +7,7 @@ TEMPLATE = app
 TARGET = tdb
 INCLUDEPATH += .
 
-QT += sql
+QT += sql widgets
 
 # Input
 HEADERS += TDBAccount.h \

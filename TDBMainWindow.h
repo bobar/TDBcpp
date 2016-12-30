@@ -24,7 +24,6 @@
 #include	<QMenuBar>
 #include	<QMessageBox>
 #include	<QRegExp>
-#include	<QSound>
 #include	<QSqlError>
 #include	<QSqlQuery>
 #include	<QSqlRecord>
