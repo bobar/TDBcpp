@@ -21,7 +21,7 @@ TDBClopes::TDBClopes(QWidget* parent) :
 
   setWindowTitle("Achat clopes");
   marque_label = new QLabel("Marque", this);
-  quantite_label = new QLabel("Quantité", this);
+  quantite_label = new QLabel("QuantitÃ©", this);
   quantite_spin = new QSpinBox(this);
   quantite_spin->setValue(1);
   quantite_spin->setMinimum(1);

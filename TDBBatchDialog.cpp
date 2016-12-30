@@ -3,11 +3,11 @@
 TDBBatchDialog::TDBBatchDialog(QWidget* parent, QStringList *lines, TDBAccount* binet_, int admin_id_) :
         QDialog(parent), admin_id(admin_id_), binet_account(binet_), rawData(lines)
 {
-    setWindowTitle("ParamËtres du fichier texte");
+    setWindowTitle("Param√®tres du fichier texte");
     layout = new QGridLayout(this);
 
-    separator_label = new QLabel("SÈparateur", this);
-    listView_label = new QLabel("AperÁu du ficher :", this);
+    separator_label = new QLabel("S√©parateur", this);
+    listView_label = new QLabel("Aper√ßu du ficher :", this);
 
     separator_edit = new QLineEdit(this);
     separator_edit->setInputMask("X");
@@ -40,7 +40,7 @@ TDBBatchDialog::TDBBatchDialog(QWidget* parent, QStringList *lines, TDBAccount* 
     connect(cancel_button, SIGNAL(pressed()), this, SLOT(reject()));
     connect(separator_edit, SIGNAL(textEdited(QString)), this, SLOT(setSeparator(QString)));
 
-	// devinons le caractËre qui sÈpare les champs
+	// devinons le caract√®re qui s√©pare les champs
 	separator = educatedGuess();
 	separator_edit->setText(QString(separator));
 	// et lisons ce fichier
@@ -70,7 +70,7 @@ void TDBBatchDialog::process()
         cost2 = rawData->at(i).section(separator, 2, 3);
         cost = 0;
 
-		// on ne gËre pas les sÈparateurs dans des guillemets (c‡d on coupe au milieu de "aaa,bbb"). On les vire, donc.
+		// on ne g√®re pas les s√©parateurs dans des guillemets (c√†d on coupe au milieu de "aaa,bbb"). On les vire, donc.
         if(tri.startsWith('"') && tri.endsWith('"'))
             tri = tri.mid(1, tri.size() -2);
 
@@ -83,16 +83,16 @@ void TDBBatchDialog::process()
         if(cost2.startsWith('"') && cost2.endsWith('"'))
             cost2 = cost2.mid(1, cost2.size() -2);
 
-        // sÈparateur des centimes , ou . dÈpend de LOCALE
-		// on utilise donc QLocale::German qui reconnaÓt les deux
+        // s√©parateur des centimes , ou . d√©pend de LOCALE
+		// on utilise donc QLocale::German qui reconna√Æt les deux
 		QLocale c(QLocale::German);
 
 		ok_read = false;
-		// on essaye de lire sur deux cases si on a un montant ‡ virgule et une ligne "TRI,nom,3,50"
+		// on essaye de lire sur deux cases si on a un montant √† virgule et une ligne "TRI,nom,3,50"
 		if(separator == '.' || separator == ',')
 			cost = c.toDouble(cost2, &ok_read);
 
-		// cas pas flou, ou Èchec de lecture sur deux cases ("TRI,nom,3,commentaire" par exemple)
+		// cas pas flou, ou √©chec de lecture sur deux cases ("TRI,nom,3,commentaire" par exemple)
         if( !ok_read )
 			cost = c.toDouble(cost1, &ok_read);
 
@@ -107,7 +107,7 @@ void TDBBatchDialog::process()
 			processedLine << QString("Trigramme illisible");
 
 		else if ( cost < 0 )
-			processedLine << QString("Trigramme nÈgatif");
+			processedLine << QString("Trigramme n√©gatif");
 
 		else
 		{
@@ -127,7 +127,7 @@ void TDBBatchDialog::process()
 
 				else if(user_account->get_balance() < cost)
 				{
-					processedLine << QString("Donne un nÈgatif (%1)").arg( (double)(user_account->get_balance() - cost)/100 );
+					processedLine << QString("Donne un n√©gatif (%1)").arg( (double)(user_account->get_balance() - cost)/100 );
 					errcode = 1;
 				}
 
@@ -207,12 +207,12 @@ void TDBBatchDialog::valider()
 
 QChar TDBBatchDialog::educatedGuess()
 {
-	// Áa s'appelle csv aprËs tout
+	// √ßa s'appelle csv apr√®s tout
     if(rawData->isEmpty())
         return QChar(',');
 
 	QString guineaPig;
-	// j'aime pas prendre la premiËre ligne
+	// j'aime pas prendre la premi√®re ligne
 	if(rawData->count() == 1)
 		guineaPig = rawData->first();
 	else

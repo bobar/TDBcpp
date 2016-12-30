@@ -17,7 +17,7 @@ TDBHistory::TDBHistory (QWidget* parent) : QTreeWidget(parent)
 
 void TDBHistory::fill (TDBAccount* account)
 {
-    // affichage par défaut, effort minimal puisque la fenêtre doit être vide actuellement
+    // affichage par dÃ©faut, effort minimal puisque la fenÃªtre doit Ãªtre vide actuellement
     sortByColumn(-1);
 
 	TDBDatabase::open();
@@ -55,7 +55,7 @@ void TDBHistory::insert_item(QSqlQuery& query)
     int admin_id = record.value("admin").toInt();
     QString admin;
 
-    // si un admin est intervenu dans cette ligne d'historique, on récupère son trigramme pour l'afficher.
+    // si un admin est intervenu dans cette ligne d'historique, on rÃ©cupÃ¨re son trigramme pour l'afficher.
     if (admin_id)
     {
 		TDBDatabase::open();

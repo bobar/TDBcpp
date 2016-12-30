@@ -3,7 +3,7 @@
 TDBClopesCreation::TDBClopesCreation(QWidget* parent) :
   QDialog(parent)
 {
-  setWindowTitle("Création de clopes");
+  setWindowTitle("CrÃ©ation de clopes");
   marque_label = new QLabel("Marque", this);
   prix_label = new QLabel("Prix", this);
 

@@ -24,12 +24,12 @@ TDBTrigrammeMailException::TDBTrigrammeMailException(QString tri) :
 
 QString TDBTrigrammeException::what()
 {
-    return QString("Erreur de trigramme gÈnÈrique : ").append(trig);
+    return QString("Erreur de trigramme g√©n√©rique : ").append(trig);
 }
 
 QString TDBTrigrammeExistantException::what()
 {
-    return QString("Trigramme dÈj‡ existant : ").append(trig);
+    return QString("Trigramme d√©j√† existant : ").append(trig);
 }
 
 QString TDBTrigrammeInconnuException::what()

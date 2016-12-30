@@ -4,7 +4,7 @@ TDBApplication::TDBApplication(int argc, char ** argv) :
         QApplication (argc, argv)
 {
     //QLocale::setDefault(QLocale::c());
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("latin1"));
+    QTextCodec::setCodecForTr(QTextCodec::codecForName("utf-8"));
 
     // default stuff
     default_trig = "BOB";
@@ -106,16 +106,16 @@ int TDBApplication::parse()
 		}
 	}
 
-    // gestion base de données
+    // gestion base de donnÃ©es
 	this->database = new TDBDatabase(host, db, login);
 
-    // on créé les style sheets en fonction de ce qui a été donné
+    // on crÃ©Ã© les style sheets en fonction de ce qui a Ã©tÃ© donnÃ©
     if(!no_alternate_crap && alt_colors.isEmpty())
         alt_colors = QString("background-color: #f93;color:#000;");
 
 	if( (!alt_colors.isEmpty() && no_alternate_crap) || (!base_colors.isEmpty() && night_style) )
     {
-        std::cerr << QString("Des options de couleurs contradictoires ont été définies.\n").toStdString();
+        std::cerr << QString("Des options de couleurs contradictoires ont Ã©tÃ© dÃ©finies.\n").toStdString();
         usage(args.at(0));
         return 3;
     }
@@ -149,34 +149,34 @@ void TDBApplication::usage(QString name)
 	std::cout << QString("\t\t\t[-db|--database name] [ color_options ]\n\n").toStdString();
 
 	std::cout << QString("  -h --help\t\tAffiche cette aide\n\n").toStdString();
-	std::cout << QString("  -b --banque trigramme\tMet 'trigramme' comme compte banque au lieu de BôB\n").toStdString();
+	std::cout << QString("  -b --banque trigramme\tMet 'trigramme' comme compte banque au lieu de BÃ´B\n").toStdString();
 
-	std::cout << QString("  -l --login credential\tUtilise 'credential' comme login pour la base de données\n").toStdString();
-	std::cout << QString("  -db --database name\tUtilise 'name' comme nom de base de données\n").toStdString();
+	std::cout << QString("  -l --login credential\tUtilise 'credential' comme login pour la base de donnÃ©es\n").toStdString();
+	std::cout << QString("  -db --database name\tUtilise 'name' comme nom de base de donnÃ©es\n").toStdString();
 	std::cout << QString("  -host address\t\tUtilise 'address' comme serveur mysql\n").toStdString();
 
 	std::cout << QString("\n Options des couleurs (color_options)\n").toStdString();
 
-	std::cout << QString("  --default-background-color color\tDonne la couleur ``color'' à la fenêtre\n").toStdString();
+	std::cout << QString("  --default-background-color color\tDonne la couleur ``color'' Ã  la fenÃªtre\n").toStdString();
 	std::cout << QString("  -dbc color\n\n").toStdString();
 
 	std::cout << QString("  --default-front-color color\t\tDonne la couleur ``color'' au texte\n").toStdString();
 	std::cout << QString("  -dfc color\n\n").toStdString();
 
-	std::cout << QString("  --alternate-background-color color\tDonne la couleur ``color'' à la fenêtre\n").toStdString();
+	std::cout << QString("  --alternate-background-color color\tDonne la couleur ``color'' Ã  la fenÃªtre\n").toStdString();
 	std::cout << QString("  -abc color\t\t\t\tquand un binet sert de banque.\n\n").toStdString();
 
 	std::cout << QString("  --alternate-front-color color\t\tDonne la couleur ``color'' au texte\n").toStdString();
 	std::cout << QString("  -afc color\t\t\t\tquand un binet sert de banque.\n\n").toStdString();
 
-	std::cout << QString("  --no-alternate-colors\t\t\tGarde le style par défaut quand\n").toStdString();
+	std::cout << QString("  --no-alternate-colors\t\t\tGarde le style par dÃ©faut quand\n").toStdString();
 	std::cout << QString("  -noac\t\t\t\t\tun binet sert de banque.\n\n").toStdString();
 
 	std::cout << QString("  --night\t\t\t\tSet de couleurs sombres, parce qu'on\n").toStdString();
-	std::cout << QString("\t\t\t\t\taime bien la CK et les hémos\n\n").toStdString();
+	std::cout << QString("\t\t\t\t\taime bien la CK et les hÃ©mos\n\n").toStdString();
 
-	std::cout << QString("\tLes couleurs se spécifient au format ``rgb(rrr,ggg,bbb)'', \n").toStdString();
-	std::cout << QString("\t``rgb(rrr,ggg,bbb,aaa)'' en décimal (0 à 255, aaa est la\n").toStdString();
+	std::cout << QString("\tLes couleurs se spÃ©cifient au format ``rgb(rrr,ggg,bbb)'', \n").toStdString();
+	std::cout << QString("\t``rgb(rrr,ggg,bbb,aaa)'' en dÃ©cimal (0 Ã  255, aaa est la\n").toStdString();
 	std::cout << QString("\ttransparence alpha) ou bien ``#RRGGBB'' en hexa.\n").toStdString();
 }
 

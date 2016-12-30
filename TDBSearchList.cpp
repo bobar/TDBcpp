@@ -4,7 +4,7 @@ TDBSearchList::TDBSearchList (QWidget* parent) : QTreeWidget(parent)
 {
     setColumnCount(5);
     QStringList header_strings;
-    header_strings << "Trigramme" << "Nom" << "Prénom"<< "Surnom" << "Promo";
+    header_strings << "Trigramme" << "Nom" << "PrÃ©nom"<< "Surnom" << "Promo";
     setHeaderLabels(header_strings);
     setSelectionMode(QAbstractItemView::SingleSelection);
 }

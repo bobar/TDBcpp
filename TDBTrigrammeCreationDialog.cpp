@@ -15,7 +15,7 @@ TDBTrigrammeCreationDialog::TDBTrigrammeCreationDialog(QWidget* parent) :
   trig_status_label = new QLabel("...", this);
   layout->addWidget(trig_status_label, 0, 2);
 
-  first_name_label = new QLabel(tr("Prénom"), this);
+  first_name_label = new QLabel(tr("PrÃ©nom"), this);
   layout->addWidget(first_name_label, 2, 0);
 
   nickname_label = new QLabel(tr("Surnom"), this);

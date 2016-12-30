@@ -48,16 +48,16 @@ void TDBAdminList::insert_item(QSqlQuery& query)
   switch(record.value("perm").toInt())
     {
     case pekin:
-      item<<"pékin";
+      item<<"pÃ©kin";
       break;
     case ami_du_bob:
-      item<<"Ami du BôB";
+      item<<"Ami du BÃ´B";
       break;
     case bobarman:
-      item<<"Ancien BôBarman";
+      item<<"Ancien BÃ´Barman";
       break;
     case root:
-      item<<"BôBarman";
+      item<<"BÃ´Barman";
       break;
     }
   insertTopLevelItem(0,new QTreeWidgetItem(this, item));

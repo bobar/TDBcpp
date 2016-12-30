@@ -2,7 +2,7 @@
 
 TDBPasswordDialog::TDBPasswordDialog(QWidget* parent) : QDialog(parent)
 {
-	setWindowTitle("Connexion à la base de données");
+	setWindowTitle("Connexion Ã  la base de donnÃ©es");
 
 	passwd_label = new QLabel("Mot de passe", this);
 	passwd_edit = new QLineEdit(this);

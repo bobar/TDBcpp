@@ -64,10 +64,10 @@ protected:
     void keyPressEvent(QKeyEvent* e);
 
 private:
-    // vÈrifie si un compte est actif, sinon demande un trigramme
+    // v√©rifie si un compte est actif, sinon demande un trigramme
     // renvoie true si on a un compte actif, false sinon
     bool init_action();
-    // zdÈo
+    // zd√©o
     bool bob_is_bank;
 
     int last_conso_montant;
@@ -129,7 +129,7 @@ private:
 
     QToolBar* toolbar;
 
-    // Áa c'est tout le bordel ‡ droite
+    // √ßa c'est tout le bordel √† droite
     QVBoxLayout* infos_layout;
     QHBoxLayout* bank_layout;
     QPushButton* bob_bank_button;
@@ -140,11 +140,11 @@ private:
     QLabel* label_turnover;
     QLabel* label_picture;
 
-    // le compte du BÙB
+    // le compte du B√¥B
     TDBAccount* default_bank_account;
-    // le compte des soirÈes, gÈnÈralement NULL
+    // le compte des soir√©es, g√©n√©ralement NULL
     TDBAccount* temp_bank_account;
-    // le compte banque actif, gÈnÈralement BÙB
+    // le compte banque actif, g√©n√©ralement B√¥B
     TDBAccount* current_bank_account;
     // le compte client actif
     TDBAccount* current_account;
@@ -153,9 +153,9 @@ private:
     void set_current_account(const QString& trigramme);
     // nettoie tout ce qui est historique et panneau d'infos
     void clear();
-    // cÈlemo
+    // c√©lemo
     void update();
-    // stÈou
+    // st√©ou
     void update_money_display();
 
 private slots:

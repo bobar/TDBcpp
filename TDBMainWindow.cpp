@@ -4,7 +4,7 @@ TDBMainWindow::TDBMainWindow() : QWidget()
 {
     setWindowTitle("TDB2.1");
     QString banque = TDBApp->default_bank();
-    bob_bank_button = new QPushButton(banque=="BOB"?"BôB":banque, this);
+    bob_bank_button = new QPushButton(banque=="BOB"?"BÃ´B":banque, this);
     binet_bank_button = new QPushButton("TDB2.1", this);
     this->setStyleSheet(TDBApp->default_style());
 
@@ -32,7 +32,7 @@ TDBMainWindow::TDBMainWindow() : QWidget()
     catch (TDBTrigrammeInconnuException)
     {
         TDBDatabase::close(true);
-        TDBApplication::critical(this,"Pas de compte banque, arrêt");
+        TDBApplication::critical(this,"Pas de compte banque, arrÃªt");
         exit(1);
         qApp->exit(1);
     }
@@ -44,26 +44,26 @@ TDBMainWindow::TDBMainWindow() : QWidget()
     temp_bank_account = 0;
 
     enter_trigramme_action = new QAction("Entrer un trigramme", this);
-    transaction_action = new QAction("Débiter un compte", this);
-    create_trigramme_action = new QAction("Créer un trigramme", this);
+    transaction_action = new QAction("DÃ©biter un compte", this);
+    create_trigramme_action = new QAction("CrÃ©er un trigramme", this);
     create_trigramme_action->setShortcut(QKeySequence("Ctrl+N"));
     modif_trigramme_action = new QAction("Modifier un trigramme", this);
     modif_trigramme_action->setShortcut(QKeySequence("Ctrl+M"));
     quit_action = new QAction("Quitter", this);
     refill_action = new QAction("Approvisioner", this);
     refill_action->setShortcut(QKeySequence("+"));
-    batch_action = new QAction("Débiter plusieurs comptes depuis un fichier", this);
+    batch_action = new QAction("DÃ©biter plusieurs comptes depuis un fichier", this);
     batch_action->setShortcut(QKeySequence("Ctrl+B"));
 
 
     //son_action = new QAction("Plapp", this);
-    //zde_action = new QAction("Zdé", this);
+    //zde_action = new QAction("ZdÃ©", this);
     //pch_action = new QAction("Pchhht", this);
     //mail_action = new QAction("Mail", this);
     //mail_action->setEnabled(false);
     //mathis_action = new QAction("Mathis", this);
 
-    //toggle_etron_action = new QAction("Étron indisponible", this);
+    //toggle_etron_action = new QAction("Ã‰tron indisponible", this);
     //toggle_etron_action->setEnabled(false);
 
     transfert_action = new QAction("Transfert", this);
@@ -71,9 +71,9 @@ TDBMainWindow::TDBMainWindow() : QWidget()
     admin_admin_action = new QAction("Comptes admin", this);
     passwd_action = new QAction("Changer de mot de passe", this);
     export_action = new QAction("Exporter", this);
-    reset_turnover_action = new QAction("Réinitialiser chiffres d'affaires", this);
-    set_bank_action = new QAction("Début de soirée", this);
-    remove_bank_action = new QAction("Fin de soirée", this);
+    reset_turnover_action = new QAction("RÃ©initialiser chiffres d'affaires", this);
+    set_bank_action = new QAction("DÃ©but de soirÃ©e", this);
+    remove_bank_action = new QAction("Fin de soirÃ©e", this);
     remove_bank_action->setEnabled(false);
     erase_trigramme_action = new QAction("Supprimer un trigramme", this);
     search_action = new QAction("Rechercher un trigramme", this);
@@ -82,7 +82,7 @@ TDBMainWindow::TDBMainWindow() : QWidget()
     clopes_action = new QAction("Acheter des clopes", this);
     clopes_action->setShortcut(QKeySequence("Ctrl+C"));
     //all_lights_on_action = new QAction("Tout allumer", this);
-    //all_lights_off_action = new QAction("Tout éteindre", this);
+    //all_lights_off_action = new QAction("Tout Ã©teindre", this);
 
 
     trigramme_export_action = new QAction("Exporter le trigramme", this);
@@ -234,8 +234,8 @@ TDBMainWindow::~TDBMainWindow()
 
 void TDBMainWindow::ask_trigramme(QString key)
 {
-    // la key c'est si jamais on tape une lettre sur la fenêtre principale
-    // ça ouvre la boîte avec déjà une lettre dedans
+    // la key c'est si jamais on tape une lettre sur la fenÃªtre principale
+    // Ã§a ouvre la boÃ®te avec dÃ©jÃ  une lettre dedans
 
     TDBTrigrammeDialog trigramme_dialog(this, key);
     if (trigramme_dialog.exec())
@@ -312,7 +312,7 @@ void TDBMainWindow::keyPressEvent(QKeyEvent* e)
             return;
         }
 
-        // conso si un chiffre ou point est entré et un compte actif
+        // conso si un chiffre ou point est entrÃ© et un compte actif
         bool num = key.contains(QRegExp("[0-9.]"));
         if(!current_account && num)
         {
@@ -347,7 +347,7 @@ void TDBMainWindow::achat(QString initial)
         	text.append(current_account->get_first_name())
         	  .append(" ")
         	  .append(current_account->get_name())
-        	  .append(" est en négatif");
+        	  .append(" est en nÃ©gatif");
 
         	pid_t pid = fork();
         	if (pid == 0)
@@ -357,9 +357,9 @@ void TDBMainWindow::achat(QString initial)
         	}
         }*/
 
-        if (trans_dialog.money() < 0 || trans_dialog.money() > 2000 || // ça évite la merde
+        if (trans_dialog.money() < 0 || trans_dialog.money() > 2000 || // Ã§a Ã©vite la merde
                 (trans_dialog.money() > current_account->get_balance() &&
-                 current_account->get_category()) != X_platal) // si c'est un pékin on fascise
+                 current_account->get_category()) != X_platal) // si c'est un pÃ©kin on fascise
             try
             {
                 admin_id = TDBApplication::auth(this, ami_du_bob);
@@ -378,7 +378,7 @@ void TDBMainWindow::achat(QString initial)
             last_conso_bank = current_bank_account;
             last_clopes = QString();
             cancel_action->setEnabled(true);
-            //on revient au BôB pour la banque, ça fascise les binets et pas le BôB, mais en fait non
+            //on revient au BÃ´B pour la banque, Ã§a fascise les binets et pas le BÃ´B, mais en fait non
             //bob_bank();
         }
     }
@@ -386,7 +386,7 @@ void TDBMainWindow::achat(QString initial)
 
 void TDBMainWindow::transfert()
 {
-    // c'est compliqué ce truc, en gros ça peut être indépendant du compte actif
+    // c'est compliquÃ© ce truc, en gros Ã§a peut Ãªtre indÃ©pendant du compte actif
     QString trig = QString();
     TDBAccount* account_1;
     TDBAccount* account_2;
@@ -518,10 +518,10 @@ void TDBMainWindow::create_trigramme()
     TDBTrigrammeCreationDialog tri_dialog(this);
     if (tri_dialog.exec())
     {
-        tri_dialog.get_account()->transaction(tri_dialog.money(), QString("Création de compte"), default_bank_account, admin_id);
+        tri_dialog.get_account()->transaction(tri_dialog.money(), QString("CrÃ©ation de compte"), default_bank_account, admin_id);
     }
 
-    // à voir si on rend le compte créé actif
+    // Ã  voir si on rend le compte crÃ©Ã© actif
 }
 
 // c'est clear, enfin clair quoi
@@ -539,7 +539,7 @@ void TDBMainWindow::update_money_display()
 {
     current_account->refresh_money();
 
-    // putain c'est illisible, ça update le money display
+    // putain c'est illisible, Ã§a update le money display
     double money = (double)current_account->get_balance();
     if (money < 0.0)
         label_balance->setText(QString("<font size=+10><b style=\"color: red\">%1</b></font>")
@@ -548,7 +548,7 @@ void TDBMainWindow::update_money_display()
         label_balance->setText(QString("<font size=+10><b>%1</b></font>")
                                .arg((double)current_account->get_balance()/100, 0, 'f', 2));
 
-    label_turnover->setText(QString("%1e dépensés depuis dernier reset")
+    label_turnover->setText(QString("%1e dÃ©pensÃ©s depuis dernier reset")
                             .arg((double)current_account->get_turnover()/100, 0, 'f', 2));
 }
 
@@ -728,7 +728,7 @@ void TDBMainWindow::delete_trigramme()
     if (!ok)
         return;
 
-    // vérifie si le compte est bien à zéro, ça évite les conneries
+    // vÃ©rifie si le compte est bien Ã  zÃ©ro, Ã§a Ã©vite les conneries
     if (current_account->get_balance() == 0)
     {
         current_account->erase();
@@ -769,9 +769,9 @@ void TDBMainWindow::achat_clopes()
     if (!achclopes.exec())
         return;
 
-    if (achclopes.money() > 2000 || // ça évite la merde
+    if (achclopes.money() > 2000 || // Ã§a Ã©vite la merde
             (achclopes.money() > current_account->get_balance() &&
-             current_account->get_category()) != X_platal) // si c'est un pékin on fascise
+             current_account->get_category()) != X_platal) // si c'est un pÃ©kin on fascise
         try
         {
             admin_id = TDBApplication::auth(this, ami_du_bob);
@@ -823,7 +823,7 @@ void TDBMainWindow::batch_achats()
 
     if(current_account->get_category() != binet)
     {
-        QMessageBox::critical(this, "Erreur de trigramme", "Le bénéficiaire n'est pas un binet !");
+        QMessageBox::critical(this, "Erreur de trigramme", "Le bÃ©nÃ©ficiaire n'est pas un binet !");
         return;
     }
 
@@ -835,7 +835,7 @@ void TDBMainWindow::batch_achats()
     QFile file (path);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        QMessageBox::critical(this, "Erreur de lecture", "Erreur à l'ouverture du fichier.");
+        QMessageBox::critical(this, "Erreur de lecture", "Erreur Ã  l'ouverture du fichier.");
         return;
     }
 
@@ -853,7 +853,7 @@ void TDBMainWindow::batch_achats()
 
         if (!rejected.open(QIODevice::WriteOnly | QIODevice::Text))
         {
-            QMessageBox::critical(this, "Erreur de lecture", "Erreur à l'ouverture du fichier.");
+            QMessageBox::critical(this, "Erreur de lecture", "Erreur Ã  l'ouverture du fichier.");
             return;
         }
 
@@ -863,8 +863,8 @@ void TDBMainWindow::batch_achats()
         while( javaIter.hasNext() )
             out << (QString)javaIter.next() << "\n";
 
-        QMessageBox::information((QWidget*)this, QString("Trigrammes non débités"),
-                                 QString("Lignes ignorées %1 lignes ont été ignorées et stockées dans le fichier :\n%2").arg(lines.size()).arg(rejected.fileName())
+        QMessageBox::information((QWidget*)this, QString("Trigrammes non dÃ©bitÃ©s"),
+                                 QString("Lignes ignorÃ©es %1 lignes ont Ã©tÃ© ignorÃ©es et stockÃ©es dans le fichier :\n%2").arg(lines.size()).arg(rejected.fileName())
                                 );
     }
 
@@ -971,13 +971,13 @@ void TDBMainWindow::etron_changed(int state)
   switch(state)
     {
     case -1:
-      toggle_etron_action->setText("Étron indisponible");
+      toggle_etron_action->setText("Ã‰tron indisponible");
       break;
     case 0:
-      toggle_etron_action->setText("Ouvrir le BôB");
+      toggle_etron_action->setText("Ouvrir le BÃ´B");
       break;
     case 1:
-      toggle_etron_action->setText("Fermer le BôB");
+      toggle_etron_action->setText("Fermer le BÃ´B");
       break;
     }
 }

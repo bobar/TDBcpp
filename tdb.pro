@@ -7,8 +7,6 @@ TEMPLATE = app
 TARGET = tdb
 INCLUDEPATH += .
 
-unix:INCLUDEPATH += /usr/src/qt/src/sql/kernel /usr/include/qt4/Qt .
-
 QT += sql
 
 # Input

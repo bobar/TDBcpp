@@ -8,7 +8,7 @@ TDBPasswordChange::TDBPasswordChange(QWidget* parent, int i) :
   passwd1_edit = new QLineEdit(this);
   passwd1_edit->setEchoMode(QLineEdit::Password);
 
-  passwd2_label = new QLabel("Vérification", this);
+  passwd2_label = new QLabel("VÃ©rification", this);
   passwd2_edit = new QLineEdit(this);
   passwd2_edit->setEchoMode(QLineEdit::Password);
 

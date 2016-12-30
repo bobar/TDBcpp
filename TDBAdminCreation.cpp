@@ -3,10 +3,10 @@
 TDBAdminCreation::TDBAdminCreation(QWidget* parent) :
   QDialog(parent)
 {
-  setWindowTitle("Création d'un admin");
+  setWindowTitle("CrÃ©ation d'un admin");
   trigramme_label = new QLabel("Trigramme", this);
   passwd1_label = new QLabel("Mot de passe", this);
-  passwd2_label = new QLabel("Vérification", this);
+  passwd2_label = new QLabel("VÃ©rification", this);
   perm_label = new QLabel("Niveau", this);
  
   trigramme_edit = new QLineEdit(this);
@@ -14,10 +14,10 @@ TDBAdminCreation::TDBAdminCreation(QWidget* parent) :
 
   perm_combo = new QComboBox(this);
 
-  perm_combo->addItem("Pékin", pekin);
-  perm_combo->addItem("Ami du BôB", ami_du_bob);
-  perm_combo->addItem("Ancien BôBarman", bobarman);
-  perm_combo->addItem("BôBarman", root);
+  perm_combo->addItem("PÃ©kin", pekin);
+  perm_combo->addItem("Ami du BÃ´B", ami_du_bob);
+  perm_combo->addItem("Ancien BÃ´Barman", bobarman);
+  perm_combo->addItem("BÃ´Barman", root);
   perm_combo->setCurrentIndex(perm_combo->findData(pekin));
 
   passwd1_edit = new QLineEdit(this);

@@ -22,7 +22,7 @@ TDBTrigrammeDialog::TDBTrigrammeDialog(QWidget* parent, QString initial) :
     setLayout(layout);
 
 #if win32
-	// fait bugger sous 'nux, pas moyen d'avoir le curseur sans sélectionner
+	// fait bugger sous 'nux, pas moyen d'avoir le curseur sans sÃ©lectionner
     trigramme_edit->setFocus(Qt::PopupFocusReason);
 #endif
 	trigramme_edit->setCursorPosition( initial.length() );

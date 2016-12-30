@@ -13,8 +13,8 @@ TDBRefillDialog::TDBRefillDialog(QWidget* parent) :
   reason_label = new QLabel("Mode", this);
   reason_combo = new QComboBox(this);
 
-  reason_combo->addItem("Espèce", 1);
-  reason_combo->addItem("Chèque", 2);
+  reason_combo->addItem("EspÃ¨ce", 1);
+  reason_combo->addItem("ChÃ¨que", 2);
 
   layout = new QGridLayout(this);
   layout->addWidget(money_label, 0,0);
@@ -62,9 +62,9 @@ QString TDBRefillDialog::reason()
   switch(reason_combo->currentIndex())
     {
     case 0:
-      return "espèce";
+      return "espÃ¨ce";
     case 1:
-      return "chèque";
+      return "chÃ¨que";
     }
   return QString();
 }

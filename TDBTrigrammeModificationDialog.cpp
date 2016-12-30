@@ -14,7 +14,7 @@ TDBTrigrammeModificationDialog::TDBTrigrammeModificationDialog(QWidget* parent, 
     name_label = new QLabel(tr("Nom"), this);
     layout->addWidget(name_label, 1, 0);
 
-    first_name_label = new QLabel(tr("Prénom"), this);
+    first_name_label = new QLabel(tr("PrÃ©nom"), this);
     layout->addWidget(first_name_label, 2, 0);
 
     nickname_label = new QLabel(tr("Surnom"), this);
