@@ -35,8 +35,8 @@ void TDBDatabase::open()
         if (!default_db->db.open())
         {
             qDebug() << QSqlDatabase::drivers();
-            QMessageBox::critical(0, "zou.sql", default_db->db.lastError().text());
-            return;
+            QMessageBox::critical(0, "zou.sql", QString("Impossible de se connecter à la base de données:\n").append(default_db->db.lastError().text()));
+            exit(1);
         }
     }
 
